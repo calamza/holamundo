@@ -98,7 +98,6 @@ pipeline{
                     pwd
                     echo "Clean up workfolder"
                     #rm -Rf .
-                    cd ..
                     rm -Rf *
                 '''
             }
