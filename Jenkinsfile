@@ -47,16 +47,13 @@ pipeline{
                 label 'maven'
             }
             steps{
-                script
-                {
+                script{
                     pom = readMavenPom(file: 'pom.xml')
                     def pom_version = pom.version
+                    def pom_packaging = pom.packaging
                     echo pom.version
-                    sh '''
-                        pwd
-                        ls -la
-                        echo $pom_version
-                    '''
+                    echo pom_packaging
+                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}")
                 }
 
             }
