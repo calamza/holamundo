@@ -2,11 +2,12 @@ pipeline{
     agent {
          label 'master'
     }
+    /*
     tools {
-         maven 'maven'
+         maven 'maven 3.6'
          jdk 'java'
     }
-    
+    */
     environment {
         // This can be nexus3 or nexus2
         NEXUS_VERSION = "nexus3"
