@@ -59,11 +59,11 @@ pipeline{
 
             }
         }
-        
+        /*
         stage("Upload to nexus") {
             steps {
+                echo hola
                 
-                /*
                 script {
                     
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
@@ -109,10 +109,10 @@ pipeline{
                     }
                     
                 }
-                */
+                
             }
         } //fin stage upload
-        
+        */
         /*
         stage("Post") {
             agent {
