@@ -17,7 +17,8 @@ pipeline{
             steps{
                 sh '''
                     echo "Antes de correr el docker"
-                    docker run -it --name maven-node -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
+                    bat 'mvn package
+                    #mvn clean install
                 '''
                 
                //bat 'mvn package'
