@@ -14,10 +14,10 @@ pipeline{
         }
         stage('build'){
             steps{
-                script {
+                sh ''' 
                     docker run -it --rm --name maven-node -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
-
-                }
+                '''
+                
                //bat 'mvn package'
             }
         }
