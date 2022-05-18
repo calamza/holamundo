@@ -19,7 +19,7 @@ pipeline{
             steps{
                 sh '''
                     pwd
-                    bat 'mvn package
+                    bat 'mvn package'
                     #mvn clean install
                 '''
                 
