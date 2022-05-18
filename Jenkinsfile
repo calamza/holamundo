@@ -55,12 +55,11 @@ pipeline{
                         pwd
                         echo ${pom_version}
                     '''
-                    echo ${pom_version}
                 }
 
             }
         }
-        /*
+        
         stage("Upload to nexus") {
             steps {
                 script {
@@ -113,7 +112,7 @@ pipeline{
                 }
             }
         } //fin stage upload
-        */
+        
         /*
         stage("Post") {
             agent {
