@@ -99,7 +99,7 @@ pipeline{
                     echo "Clean up workfolder"
                     #rm -Rf .
                     cd ..
-                    rm -Rf .
+                    rm -Rf *
                 '''
             }
         } //fin stage post
