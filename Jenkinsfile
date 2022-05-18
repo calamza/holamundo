@@ -13,7 +13,9 @@ pipeline{
             }
         }
         stage('Build artifact'){
-            agent { host }
+            agent {
+                label 'maven'
+            }
             steps{
                 sh '''
                     echo "Antes de correr el docker"
