@@ -79,7 +79,7 @@ pipeline{
                     artifactPath = filesByGlob[0].path;
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
-                    
+                    /*
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         
@@ -109,6 +109,7 @@ pipeline{
                     } else {
                         error "*** File: ${artifactPath}, could not be found";
                     }
+                    */
                 }
             }
         } //fin stage upload
