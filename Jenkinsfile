@@ -51,8 +51,10 @@ pipeline{
                 {
                     pom = readMavenPom(file: 'pom.xml')
                     def pom_version = pom.version
+                    echo pom.version
                     sh '''
                         pwd
+                        ls -la
                         echo $pom_version
                     '''
                 }
