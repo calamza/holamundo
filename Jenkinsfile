@@ -42,7 +42,7 @@ pipeline{
                 '''
             }
         }
-        stage('info'){
+        stage('Info pom'){
             agent {
                 label 'maven'
             }
@@ -113,6 +113,7 @@ pipeline{
             }
         } //fin stage upload
         */
+        /*
         stage("Post") {
             agent {
                 label 'maven'
@@ -126,5 +127,6 @@ pipeline{
                 }
             }
         } //fin stage post
+        */
     }
 }
