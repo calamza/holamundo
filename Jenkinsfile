@@ -13,7 +13,7 @@ pipeline{
             }
         }
         stage('Build artifact'){
-            agent host
+            agent { host }
             steps{
                 sh '''
                     echo "Antes de correr el docker"
