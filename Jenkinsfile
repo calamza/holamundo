@@ -43,12 +43,17 @@ pipeline{
             }
         }
         stage('info'){
+            agent {
+                label 'maven'
+            }
             steps{
                 script
                 {
                     def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
                     def artifactId = sh script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true
-                    
+                    sh '''
+                        echo ${version}
+                    '''
                 }
 
             }
