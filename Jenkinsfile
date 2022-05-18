@@ -96,10 +96,10 @@ pipeline{
         stage("Post") {
             steps {
                 dir(${WORKFOLDER}) {
-                    script {
+                    sh '''
                         echo "Clean up workfolder"
                         rm -Rf .
-                    }
+                    '''
                 }
             }
         } //fin stage post
