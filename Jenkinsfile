@@ -95,7 +95,7 @@ pipeline{
         } //fin stage upload
         stage("Post") {
             steps {
-                dir(${WORKFOLDER}) {
+                dir "${WORKFOLDER}" {
                     sh '''
                         echo "Clean up workfolder"
                         rm -Rf .
