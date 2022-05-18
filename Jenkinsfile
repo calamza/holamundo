@@ -49,10 +49,11 @@ pipeline{
             steps{
                 script
                 {
-                    def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
-                    def artifactId = sh script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true
+                    pom = readMavenPom(file: 'pom.xml')
+                    def pom_version = pom.version
                     sh '''
-                        echo ${version}
+                        pwd
+                        echo ${pom.version}
                     '''
                 }
 
@@ -113,6 +114,9 @@ pipeline{
         } //fin stage upload
         */
         stage("Post") {
+            agent {
+                label 'maven'
+            }
             steps {
                 dir "${WORKFOLDER}" {
                     sh '''
