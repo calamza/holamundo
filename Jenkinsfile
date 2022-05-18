@@ -35,29 +35,19 @@ pipeline{
                 sh '''
                     pwd
                     #bat 'mvn package'
-                    mvn clean install
-                '''
-                
-               //bat 'mvn package'
-            }
-        }
-        stage('Upload artifact'){
-            agent {
-                label 'maven'
-            }
-            steps{
-                sh '''
-                    pwd
-                    mvn package
                     #mvn clean install
+                    mvn package
                 '''
-                
-               //bat 'mvn package'
             }
         }
         stage("Upload to nexus") {
             steps {
                 script {
+                    sh '''
+                        echo "Estoy en la carpeta "
+                        pwd
+                        echo "lalalalala"
+                    '''
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     pom = readMavenPom file: "pom.xml";
                     // Find built artifact under target folder
