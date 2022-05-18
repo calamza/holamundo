@@ -98,6 +98,9 @@ pipeline{
                     pwd
                     echo "Clean up workfolder"
                     #rm -Rf .
+                    cd ..
+                    array=(ww/* ee/* qq/*)
+                    printf "%s\n" "${array[@]}"
                 '''
             }
         } //fin stage post
