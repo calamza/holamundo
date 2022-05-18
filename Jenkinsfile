@@ -13,9 +13,10 @@ pipeline{
             }
         }
         stage('build'){
+            agent { docker }
             steps{
                 sh ''' 
-                    docker run -it --rm --name maven-node -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
+                    docker run -it --name maven-node -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-8 mvn clean install
                 '''
                 
                //bat 'mvn package'
