@@ -53,7 +53,7 @@ pipeline{
                     def pom_version = pom.version
                     sh '''
                         pwd
-                        echo ${pom_version}
+                        echo $pom_version
                     '''
                 }
 
@@ -62,12 +62,7 @@ pipeline{
         
         stage("Upload to nexus") {
             steps {
-                pom = readMavenPom file: 'pom.xml'
-                env.POM_VERSION = pom.version
-
-                sh '''#!/bin/bash -xe
-                    echo $POM_VERSION
-                '''
+                
                 /*
                 script {
                     
