@@ -19,6 +19,8 @@ pipeline{
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus-credentials"
+        // Workfolder
+        WORKFOLDER = "/usr/jenkins/node_agent/workspace"
     }
 
     stages{
@@ -46,7 +48,7 @@ pipeline{
                     sh '''
                         echo "Estoy en la carpeta "
                         pwd
-                        echo "lalalalala"
+                        
                     '''
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     pom = readMavenPom file: "pom.xml";
@@ -90,6 +92,16 @@ pipeline{
                     }
                 }
             }
-        }
+        } //fin stage upload
+        stage("Post") {
+            steps {
+                dir(${WORKFOLDER}) {
+                    script {
+                        echo "Clean up workfolder"
+                        rm -Rf .
+                    }
+                }
+            }
+        } //fin stage post
     }
 }
