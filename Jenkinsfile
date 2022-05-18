@@ -18,7 +18,7 @@ pipeline{
             }
             steps{
                 sh '''
-                    echo "Antes de correr el docker"
+                    pwd
                     bat 'mvn package
                     #mvn clean install
                 '''
