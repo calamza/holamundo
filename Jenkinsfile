@@ -94,13 +94,11 @@ pipeline{
                 label 'maven'
             }
             steps {
-                dir "${WORKFOLDER}" {
-                    sh '''
-                        pwd
-                        echo "Clean up workfolder"
-                        rm -Rf .
-                    '''
-                }
+                sh '''
+                    pwd
+                    echo "Clean up workfolder"
+                    #rm -Rf .
+                '''
             }
         } //fin stage post
         
