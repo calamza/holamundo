@@ -53,7 +53,7 @@ pipeline{
                     def pom_version = pom.version
                     sh '''
                         pwd
-                        echo ${pom.version}
+                        echo ${pom_version}
                     '''
                 }
 
