@@ -7,13 +7,13 @@ pipeline{
     }
     */
     stages{
-        stage('checkout'){
+        stage('Checkout'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ssh_github_jtassi', url: 'git@github.com:calamza/holamundo.git']]])
             }
         }
-        stage('build'){
-            agent { label docker }
+        stage('Build artifact'){
+            agent host
             steps{
                 sh '''
                     echo "Antes de correr el docker"
