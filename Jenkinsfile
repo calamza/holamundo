@@ -26,7 +26,7 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ssh_github_jtassi', url: 'git@github.com:calamza/holamundo.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ssh_github_key', url: 'git@github.com:calamza/holamundo.git']]])
             }
         }
         stage('Build artifact'){
