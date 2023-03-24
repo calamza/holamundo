@@ -20,7 +20,7 @@ pipeline{
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus-credentials"
         // Workfolder
-        WORKFOLDER = "/usr/jenkins/node_agent/workspace"
+        //WORKFOLDER = "/usr/jenkins/node_agent/workspace"
     }
 
     stages{
@@ -35,8 +35,6 @@ pipeline{
             }
             steps{
                 sh '''
-                    pwd
-                    #bat 'mvn package'
                     #mvn clean install
                     mvn package
                 '''
@@ -97,7 +95,6 @@ pipeline{
                 sh '''
                     pwd
                     echo "Clean up workfolder"
-                    #rm -Rf .
                     rm -Rf *
                 '''
             }
