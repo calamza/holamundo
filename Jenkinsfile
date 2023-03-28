@@ -19,6 +19,7 @@ pipeline{
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus-credentials"
+        
         // Workfolder
         //WORKFOLDER = "/usr/jenkins/node_agent/workspace"
     }
@@ -36,7 +37,7 @@ pipeline{
             steps{
                 sh '''
                     #mvn clean install
-                    mvn package
+                    /opt/apache-maven-3.6.3/bin/mvn package
                 '''
             }
         }
