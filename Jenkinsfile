@@ -31,7 +31,7 @@ pipeline{
         }
         stage('Build artifact'){
             agent {
-                label 'maven'
+                label 'master'
             }
             steps{
                 sh '''
