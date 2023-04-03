@@ -42,7 +42,7 @@ pipeline{
         }
         stage('Build container'){
             agent {
-                label 'master'
+                label 'dockers'
             }
             steps{
                 sh '''
@@ -53,7 +53,7 @@ pipeline{
         } //fin stage build container
         stage('Deploy container'){
             agent {
-                label 'master'
+                label 'dockers'
             }
             steps{
                 sh '''
@@ -65,7 +65,7 @@ pipeline{
         
         stage("Post") {
             agent {
-                label 'maven'
+                label 'dockerss'
             }
             steps {
                 sh '''
