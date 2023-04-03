@@ -32,7 +32,7 @@ pipeline{
         }
         stage('Download artifact from nexus'){
             agent {
-                label 'master'
+                label 'dockers'
             }
             steps{
                 sh '''
