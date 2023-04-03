@@ -36,7 +36,8 @@ pipeline{
             }
             steps{
                 sh '''
-                    curl -v -u admin:Hola1234 -o /home/jtassi/app.jar http://192.168.42.129:8081/repository/maven-public/org/springframework/jb-hello-world-maven/0.2.1/jb-hello-world-maven-0.2.1.jar
+                    pwd 
+                    curl -v -u admin:Hola1234  http://192.168.42.129:8081/repository/maven-public/org/springframework/jb-hello-world-maven/0.2.1/jb-hello-world-maven-0.2.1.jar
                 '''
             }
         }
