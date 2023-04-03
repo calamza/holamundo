@@ -40,16 +40,28 @@ pipeline{
                 '''
             }
         }
-        stage('Upload to nexus'){
+        stage('Build container'){
             agent {
                 label 'master'
             }
             steps{
-                echo holaaa
+                sh '''
+                    docker build -t holamundo .
+                '''
 
             }
-        } //fin stage upload
-        
+        } //fin stage build container
+        stage('Deploy container'){
+            agent {
+                label 'master'
+            }
+            steps{
+                sh '''
+                    docker run -it --name holamundo -p 8080:80 holamundo
+                '''
+
+            }
+        } //fin stage build container
         
         stage("Post") {
             agent {
