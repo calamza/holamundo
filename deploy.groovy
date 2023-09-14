@@ -1,6 +1,6 @@
 pipeline{
     agent {
-         label 'master'
+         label 'docker'
     }
     /*
     tools {
@@ -14,11 +14,11 @@ pipeline{
         // This can be http or https
         NEXUS_PROTOCOL = "http"
         // Where your Nexus is running. 'nexus-3' is defined in the docker-compose file
-        NEXUS_URL = "192.168.42.129:8081"
+        NEXUS_URL = "192.168.42.130:8081"
         // Repository where we will upload the artifact
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
-        NEXUS_CREDENTIAL_ID = "nexus-credentials"
+        NEXUS_CREDENTIAL_ID = "nexus"
         
         // Workfolder
         //WORKFOLDER = "/usr/jenkins/node_agent/workspace"
@@ -27,23 +27,23 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_jtassi', url: 'git@github.com:calamza/holamundo.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'git@github.com:calamza/holamundo.git']]])
             }
         }
         stage('Download artifact from nexus'){
             agent {
-                label 'dockers'
+                label 'docker'
             }
             steps{
                 sh '''
                     pwd 
-                    curl -v -u admin:Hola1234 -o app.jar http://192.168.42.129:8081/repository/maven-public/org/springframework/jb-hello-world-maven/0.2.1/jb-hello-world-maven-0.2.1.jar
+                    curl -v -u admin:Aa12162389 -o app.jar http://192.168.42.130:8081/repository/maven-public/org/springframework/jb-hello-world-maven/0.2.1/jb-hello-world-maven-0.2.1.jar
                 '''
             }
         }
         stage('Build container'){
             agent {
-                label 'dockers'
+                label 'docker'
             }
             steps{
                 sh '''
@@ -54,11 +54,11 @@ pipeline{
         } //fin stage build container
         stage('Deploy container'){
             agent {
-                label 'dockers'
+                label 'docker'
             }
             steps{
                 sh '''
-                    docker run -it --name holamundo -p 8080:80 holamundo
+                    docker run -it --name holamundo -p 8085:80 holamundo
                 '''
 
             }
@@ -66,7 +66,7 @@ pipeline{
         
         stage("Post") {
             agent {
-                label 'dockerss'
+                label 'docker'
             }
             steps {
                 sh '''
