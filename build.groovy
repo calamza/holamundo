@@ -27,12 +27,12 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/devops2304']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'git@github.com:calamza/holamundo.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/devops2304']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'git@github.com:calamza/holamundo.git']]])
             }
         }
         stage('Build artifact'){
             agent {
-                label 'master'
+                label 'maven'
             }
             steps{
                 sh '''
@@ -43,7 +43,7 @@ pipeline{
         }
         stage('Upload to nexus'){
             agent {
-                label 'master'
+                label 'docker'
             }
             steps{
                 script{
