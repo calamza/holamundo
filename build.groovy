@@ -1,6 +1,6 @@
 pipeline{
     agent {
-         label 'maven'
+         label 'doker.maven'
     }
     /*
     tools {
