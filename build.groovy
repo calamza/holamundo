@@ -43,7 +43,7 @@ pipeline{
         }
         stage('Upload to nexus'){
             agent {
-                label 'docker'
+                label 'maven'
             }
             steps{
                 script{
@@ -90,7 +90,7 @@ pipeline{
         
         stage("Post") {
             agent {
-                label 'master'
+                label 'docker'
             }
             steps {
                 sh '''
