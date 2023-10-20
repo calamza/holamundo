@@ -37,7 +37,7 @@ pipeline{
             steps{
                 sh '''
                     pwd 
-                    curl -v -u admin:hola -o app.jar http://192.168.42.131:8081/repository/maven-releases/org/springframework/Jenkins-holamundo/0.2.2/Jenkins-holamundo-0.2.2.jar
+                    curl -v -u admin:hola1234 -o app.jar http://192.168.42.131:8081/repository/maven-releases/org/springframework/Jenkins-holamundo/0.2.2/Jenkins-holamundo-0.2.2.jar
                 '''
             }
         }
