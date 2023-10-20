@@ -19,6 +19,7 @@ pipeline{
         NEXUS_REPOSITORY = "maven-releases"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus"
+        DOCKER_VERSION = "0.2.2"
         
         // Workfolder
         //WORKFOLDER = "/usr/jenkins/node_agent/workspace"
@@ -48,6 +49,19 @@ pipeline{
             steps{
                 sh '''
                     docker build -t holamundo .
+                    docker tag holamundo:latest 192.168.42.131:8082/holamundo:latest
+                '''
+
+            }
+        } //fin stage build container
+        stage('Upload container'){
+            agent {
+                label 'docker'
+            }
+            steps{
+                sh '''
+                    #docker login admin:hola1234@192.168.42.131:8082
+                    docker push 192.168.42.131:8082/holamundo:latest
                 '''
 
             }
