@@ -60,7 +60,7 @@ pipeline{
             }
             steps{
                 sh '''
-                    docker login admin:hola1234@192.168.42.131:8082
+                    docker login -u admin -o hola1234 192.168.42.131:8082
                     docker push 192.168.42.131:8082/holamundo:latest
                 '''
 
