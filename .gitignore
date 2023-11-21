@@ -6,3 +6,6 @@ dependency-reduced-pom.xml
 .project
 .settings/
 .vscode
+
+# pruebas
+prueba1.txt
